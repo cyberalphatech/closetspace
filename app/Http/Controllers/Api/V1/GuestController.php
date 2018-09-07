@@ -30,4 +30,14 @@ class GuestController extends Controller
             return $this->responseError('Register fail', Response::HTTP_CREATED);
         }
     }
+
+    public function getGenders() {
+        $genders = $this->guestService->findAllGenders();
+        return $this->responseSuccess($genders);
+    }
+
+    public function getStyles() {
+        $styles = $this->guestService->findAllStyles();
+        return $this->responseSuccess($styles);
+    }
 }

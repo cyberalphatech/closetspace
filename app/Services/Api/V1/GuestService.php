@@ -5,6 +5,8 @@ namespace App\Services\Api\V1;
 use FileHelper;
 use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\ProfileRepository;
+use App\Repositories\Api\V1\GenderRepository;
+use App\Repositories\Api\V1\StyleRepository;
 use DB;
 use Config;
 
@@ -14,15 +16,21 @@ class GuestService
 
     private $profileRepository;
 
+    private $genderRepository;
+
+    private $styleRepository;
+
     /**
      * AuthController constructor.
      *
      * @param UserRepository $userRepository UserRepository
      */
-    public function __construct(UserRepository $userRepository, ProfileRepository $profileRepository)
+    public function __construct(UserRepository $userRepository, ProfileRepository $profileRepository, GenderRepository $genderRepository, StyleRepository $styleRepository)
     {
         $this->userRepository = $userRepository;
         $this->profileRepository = $profileRepository;
+        $this->genderRepository = $genderRepository;
+        $this->styleRepository = $styleRepository;
     }
 
     public function registerUser($request)
@@ -52,6 +60,15 @@ class GuestService
             DB::rollback();
             throw $e;
         }
-        
+    }
+
+    public function findAllGenders()
+    {
+        return $this->genderRepository->all();
+    }
+
+    public function findAllStyles()
+    {
+        return $this->styleRepository->all();
     }
 }
