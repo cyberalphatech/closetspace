@@ -37,7 +37,6 @@ class AuthController extends Controller
             $data = $this->authenticateService->processSocialLogin($input);
             return $this->responseSuccess($data);
         } catch (\Exception $ex) {
-            dd($ex);
             return $this->responseError('Login fail', Response::HTTP_UNAUTHORIZED);
         }
     }
