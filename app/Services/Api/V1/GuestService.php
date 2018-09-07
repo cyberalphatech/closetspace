@@ -32,7 +32,7 @@ class GuestService
             
             $dataUser['email'] = $request->get('email');
             $dataUser['name'] = $request->get('name');
-            $dataUser['password'] = '';
+            $dataUser['password'] = bcrypt($request->get('password'));
             $user = $this->userRepository->updateOrCreate($dataUser);
             $fileName = FileHelper::storageFile($request->file('picture'), 'profile');
             $dataProfile['picture'] = $fileName;
@@ -42,6 +42,9 @@ class GuestService
             $dataProfile['dob'] = $request->get('dob');
             $dataProfile['user_id'] = $user->id;
             $dataProfile['cover'] = $request->get('cover');
+            $dataProfile['zipcode'] = $request->get('zipcode');
+            $dataProfile['city'] = $request->get('city');
+            $dataProfile['country_id'] = $request->get('country_id');
             $profile = $this->profileRepository->updateOrCreate($dataProfile);
             DB::commit();
             return $profile;

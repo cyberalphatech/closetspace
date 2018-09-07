@@ -22,7 +22,10 @@ class Profile extends Model
         'dob',
         'gender',
         'picture',
-        'user_id'
+        'user_id',
+        'zipcode',
+        'city',
+        'country_id'
     ];
     
     protected $casts = [

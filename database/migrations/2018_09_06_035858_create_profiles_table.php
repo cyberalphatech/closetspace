@@ -23,6 +23,9 @@ class CreateProfilesTable extends Migration
             $table->dateTime('dob');
             $table->tinyInteger('gender');
             $table->string('picture');
+            $table->string('zipcode');
+            $table->string('city');
+            $table->string('country_id');
             $table->timestamps();
         });
     }
