@@ -22,4 +22,5 @@ Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::post('/register', 'GuestController@register');
     Route::get('/genders', 'GuestController@getGenders');
     Route::get('/styles', 'GuestController@getStyles');
+    Route::get('/categories', 'GuestController@getCategories');
 });
