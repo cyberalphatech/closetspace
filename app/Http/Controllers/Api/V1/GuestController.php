@@ -40,4 +40,9 @@ class GuestController extends Controller
         $styles = $this->guestService->findAllStyles();
         return $this->responseSuccess($styles);
     }
+
+    public function getCategories() {
+        $styles = $this->guestService->findAllCategories();
+        return $this->responseSuccess($styles);
+    }
 }

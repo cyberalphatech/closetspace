@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         $this->call(GenderSeeder::class);
         $this->call(StyleSeeder::class);
+        $this->call(SubCategorySeeder::class);
+        $this->call(CategorySeeder::class);
         Model::reguard();
     }
 }

@@ -7,6 +7,7 @@ use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\ProfileRepository;
 use App\Repositories\Api\V1\GenderRepository;
 use App\Repositories\Api\V1\StyleRepository;
+use App\Repositories\Api\V1\CategoryRepository;
 use DB;
 use Config;
 
@@ -20,17 +21,19 @@ class GuestService
 
     private $styleRepository;
 
+    private $categoryRepository;
     /**
      * AuthController constructor.
      *
      * @param UserRepository $userRepository UserRepository
      */
-    public function __construct(UserRepository $userRepository, ProfileRepository $profileRepository, GenderRepository $genderRepository, StyleRepository $styleRepository)
+    public function __construct(UserRepository $userRepository, ProfileRepository $profileRepository, GenderRepository $genderRepository, StyleRepository $styleRepository, CategoryRepository $categoryRepository)
     {
         $this->userRepository = $userRepository;
         $this->profileRepository = $profileRepository;
         $this->genderRepository = $genderRepository;
         $this->styleRepository = $styleRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function registerUser($request)
@@ -70,5 +73,10 @@ class GuestService
     public function findAllStyles()
     {
         return $this->styleRepository->all();
+    }
+
+    public function findAllCategories()
+    {
+        return $this->categoryRepository->with(['subCategory'])->all();
     }
 }
