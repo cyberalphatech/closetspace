@@ -13,7 +13,9 @@ class GenderSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('genders')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         $listGenders = array('Man', 'Kid', 'Woman', 'Senior');
         $genderVars = [];
         foreach ($listGenders as $gender) {

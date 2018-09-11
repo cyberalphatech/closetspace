@@ -34,3 +34,10 @@ $factory->define(App\Models\SubCategory::class, function (Faker $faker) {
         'picture' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
     ];
 });
+
+$factory->define(App\Models\MeasureType::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'picture' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+    ];
+});

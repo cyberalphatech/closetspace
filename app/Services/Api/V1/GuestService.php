@@ -22,12 +22,19 @@ class GuestService
     private $styleRepository;
 
     private $categoryRepository;
+
     /**
      * AuthController constructor.
      *
      * @param UserRepository $userRepository UserRepository
      */
-    public function __construct(UserRepository $userRepository, ProfileRepository $profileRepository, GenderRepository $genderRepository, StyleRepository $styleRepository, CategoryRepository $categoryRepository)
+    public function __construct(
+        UserRepository $userRepository,
+        ProfileRepository $profileRepository,
+        GenderRepository $genderRepository,
+        StyleRepository $styleRepository,
+        CategoryRepository $categoryRepository
+    )
     {
         $this->userRepository = $userRepository;
         $this->profileRepository = $profileRepository;

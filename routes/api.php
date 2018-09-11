@@ -23,4 +23,5 @@ Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::get('/genders', 'GuestController@getGenders');
     Route::get('/styles', 'GuestController@getStyles');
     Route::get('/categories', 'GuestController@getCategories');
+    Route::get('/mesure-types', 'UserController@getMeasureType');
 });
