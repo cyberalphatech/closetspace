@@ -45,4 +45,18 @@ class Controller extends BaseController
         ];
         return response()->json($jsonOut, $statusCode);
     }
+
+    /**
+     * Response structure json success.
+     *
+     * @param array       $data       Data return
+     * @param int         $statusCode Status code 2xx : 200, 201
+     * @param null|string $masterKey  Master key of response
+     *
+     * @return Illuminate\Http\Response response data json
+     */
+    public function responseSuccessArray($data = [], $statusCode = 200)
+    {
+        return response()->json(['data' => $data], $statusCode);
+    }
 }
