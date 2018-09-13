@@ -33,16 +33,16 @@ class GuestController extends Controller
 
     public function getGenders() {
         $genders = $this->guestService->findAllGenders();
-        return $this->responseSuccess($genders);
+        return $this->responseSuccessArray($genders);
     }
 
     public function getStyles() {
         $styles = $this->guestService->findAllStyles();
-        return $this->responseSuccess($styles);
+        return $this->responseSuccessArray($styles);
     }
 
     public function getCategories() {
         $styles = $this->guestService->findAllCategories();
-        return $this->responseSuccess($styles);
+        return $this->responseSuccessArray($styles);
     }
 }
