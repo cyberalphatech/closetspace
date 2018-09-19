@@ -19,7 +19,7 @@ class MeasureUnitSeeder extends Seeder
         $units = array('Metric'=>'centimeters', 'Imperial'=>'Inch', 'Standard' => 'xtra small , small , Large .xtra large');
         $facker = Faker::create();
         $i = 0;
-        foreach ($units as $key->$value) {
+        foreach ($units as $key => $value) {
             $i++;
             factory(MeasureUnit::class, 1)->create([
                 'name' => $key,

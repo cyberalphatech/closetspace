@@ -21,12 +21,43 @@ class SubCategorySeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         $genders = Gender::pluck('id')->toArray();
         $styles = Style::pluck('id')->toArray();
-        $listSubs = array('Sneakers', 'Boots', 'Chukka Boots', 'Cowboy & Western Boots', 'Rain & Snow Boots', 'Atheletic Shoes', 'Boat Shoes', 'Loafens & Slip-Ons', 'Oxfords & Derbys', 'Sandals & Flip Flops');
+        $listSubs = array(
+            'Baby Bags',
+            'Backpacks',
+            'Cosmetics Bags & case',
+            'Crossbody Bags',
+            'Hobos',
+            'Laptop Bags',
+            'Mini Bags',
+            'Satchels',
+            'Shoulder Bags',
+            'Totes',
+            'Travel Bags',
+            'Clutches & Wristlers',
+            'Wallets',
+            'Briefcases',
+            'Duggel Bags',
+            'Luggage',
+            'Messenger Bags',
+            'Mini',
+            'Midi',
+            'Maxi',
+            'High Low',
+            'Asymmetrical',
+            'Long Sleeve',
+            'One Shoulder',
+            'Strapless',
+            'Backless',
+            'Prom',
+            'Wediing',
+            'Casual',
+            'Formal'
+        );
         $facker = Faker::create();
         foreach ($listSubs as $sub) {
             factory(SubCategory::class, 1)->create([
                 'name' => $sub,
-                'gender' => $facker->randomElement($listSubs),
+                'gender' => $facker->randomElement($genders),
                 'style' => $facker->randomElement($styles),
                 'created_at' => now(),
                 'updated_at' => now()
