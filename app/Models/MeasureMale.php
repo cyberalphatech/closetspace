@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MeasureMale extends Model
 {
-    public $timestamps = true;
+    const TYPE = 1;
 
     protected $fillable = [
          'user_id',
