@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class MeasureFemale extends Model
 {
 
+    const TYPE = 0;
+    
     public $timestamps = true;
 
     protected $fillable = [

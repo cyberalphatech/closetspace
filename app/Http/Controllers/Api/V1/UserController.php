@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\Controller;
 use App\Services\Api\V1\UserService;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Api\V1\GetMeasuareTypeRequest;
-
+use  App\Http\Requests\Api\V1\PostMeasureRequest;
 
 class UserController extends Controller
 {
@@ -27,5 +27,11 @@ class UserController extends Controller
     {
         $measureTypes = $this->userService->findMeasureTypeByGender($request->get('gender'));
         return $this->responseSuccess($measureTypes);
+    }
+
+    public function postMeasure(PostMeasureRequest $request)
+    {
+        $measure = $this->userService->createMeasure($request);
+        return $this->responseSuccess($measure);
     }
 }
