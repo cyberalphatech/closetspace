@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SubCategorySeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(MeasureTypeSeeder::class);
+        $this->call(MeasureUnitSeeder::class);
         Model::reguard();
     }
 }

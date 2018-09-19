@@ -13,7 +13,7 @@ class CreateMesureUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mesure_units', function (Blueprint $table) {
+        Schema::create('measure_units', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
@@ -29,6 +29,6 @@ class CreateMesureUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesure_units');
+        Schema::dropIfExists('measure_units');
     }
 }

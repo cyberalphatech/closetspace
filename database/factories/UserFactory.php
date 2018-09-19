@@ -25,6 +25,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
 $factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
+        'image' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
     ];
 });
 
@@ -67,5 +68,10 @@ $factory->define(App\Models\MeasureMale::class, function (Faker $faker) {
         'bra' => $faker->randomDigitNotNull,
         'waist' => $faker->randomDigitNotNull,
         'hips' => $faker->randomDigitNotNull,
+    ];
+});
+
+$factory->define(App\Models\SubCategoryRelation::class, function (Faker $faker) {
+    return [
     ];
 });
