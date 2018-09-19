@@ -41,6 +41,12 @@ $factory->define(App\Models\MeasureType::class, function (Faker $faker) {
         'picture' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
     ];
 });
+$factory->define(App\Models\MeasureUnit::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->sentence(),
+    ];
+});
 
 $factory->define(App\Models\MeasureMale::class, function (Faker $faker) {
     return [
