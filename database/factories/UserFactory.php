@@ -41,3 +41,25 @@ $factory->define(App\Models\MeasureType::class, function (Faker $faker) {
         'picture' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
     ];
 });
+
+$factory->define(App\Models\MeasureMale::class, function (Faker $faker) {
+    return [
+        'bshape' => $faker->randomDigitNotNull,
+        'neck'=> $faker->randomDigitNotNull,
+        'chest' => $faker->randomDigitNotNull,
+        'sleeve' => $faker->randomDigitNotNull,
+        'waist' => $faker->randomDigitNotNull,
+        'hips' => $faker->randomDigitNotNull,
+        'inseam' => $faker->randomDigitNotNull,
+    ];
+});
+
+$factory->define(App\Models\MeasureMale::class, function (Faker $faker) {
+    return [
+        'bshape' => $faker->randomDigitNotNull,
+        'bust' => $faker->randomDigitNotNull,
+        'bra' => $faker->randomDigitNotNull,
+        'waist' => $faker->randomDigitNotNull,
+        'hips' => $faker->randomDigitNotNull,
+    ];
+});
