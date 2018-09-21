@@ -6,6 +6,7 @@ use App\Repositories\Api\V1\MeasureTypeRepository;
 use App\Repositories\Api\V1\MeasureMaleRepository;
 use App\Repositories\Api\V1\MeasureFemaleRepository;
 use App\Repositories\Api\V1\UserRepository;
+use App\Repositories\Api\V1\SubCategoryRepository;
 use App\Models\MeasureMale;
 
 class UserService
@@ -19,6 +20,8 @@ class UserService
 
     private $userRepository;
 
+    private $subCategoryRepository;
+
     /**
      * AuthController constructor.
      *
@@ -28,13 +31,15 @@ class UserService
         MeasureTypeRepository $measureTypeRepository,
         MeasureMaleRepository $measureMaleRepository,
         MeasureFemaleRepository $measureFemaleRepository,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        SubCategoryRepository $subCategoryRepository
     )
     {
         $this->measureTypeRepository = $measureTypeRepository;
         $this->measureMaleRepository = $measureMaleRepository;
         $this->measureFemaleRepository = $measureFemaleRepository;
         $this->userRepository = $userRepository;
+        $this->subCategoryRepository = $subCategoryRepository;
     }
 
 
@@ -54,5 +59,10 @@ class UserService
             return $this->measureMaleRepository->create($data);
         }
         return $this->measureFemaleRepository->create($data);
+    }
+
+    public function subcategories()
+    {
+        return $this->subCategoryRepository->all();
     }
 }

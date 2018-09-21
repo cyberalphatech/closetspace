@@ -34,4 +34,10 @@ class UserController extends Controller
         $measure = $this->userService->createMeasure($request);
         return $this->responseSuccess($measure);
     }
+
+    public function getSubCategories()
+    {
+        $subCat = $this->userService->subcategories();
+        return $this->responseSuccessArray($subCat);
+    }
 }
