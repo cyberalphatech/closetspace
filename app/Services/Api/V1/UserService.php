@@ -9,6 +9,7 @@ use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\SubCategoryRepository;
 use App\Repositories\Api\V1\BrandRepository;
 use App\Repositories\Api\V1\ItemRepository;
+use App\Repositories\Api\V1\ColorRepository;
 use App\Models\MeasureMale;
 
 class UserService
@@ -27,6 +28,8 @@ class UserService
     private $brandRepository;
 
     private $itemRepository;
+
+    private $colorRepository;
     /**
      * AuthController constructor.
      *
@@ -39,7 +42,8 @@ class UserService
         UserRepository $userRepository,
         SubCategoryRepository $subCategoryRepository,
         BrandRepository $brandRepository,
-        ItemRepository $itemRepository
+        ItemRepository $itemRepository,
+        ColorRepository $colorRepository
     )
     {
         $this->measureTypeRepository = $measureTypeRepository;
@@ -49,6 +53,7 @@ class UserService
         $this->subCategoryRepository = $subCategoryRepository;
         $this->brandRepository = $brandRepository;
         $this->itemRepository = $itemRepository;
+        $this->colorRepository = $colorRepository;
     }
 
 
@@ -83,5 +88,10 @@ class UserService
     public function getItems()
     {
         return $this->itemRepository->all();
+    }
+
+    public function getColors()
+    {
+        return $this->colorRepository->all();
     }
 }

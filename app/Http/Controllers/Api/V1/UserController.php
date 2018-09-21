@@ -52,4 +52,10 @@ class UserController extends Controller
         $items = $this->userService->getItems();
         return $this->responseSuccessArray($items);
     }
+
+    public function getColors()
+    {
+        $colors = $this->userService->getColors();
+        return $this->responseSuccessArray($colors);
+    }
 }
