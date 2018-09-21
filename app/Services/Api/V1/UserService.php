@@ -8,6 +8,7 @@ use App\Repositories\Api\V1\MeasureFemaleRepository;
 use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\SubCategoryRepository;
 use App\Repositories\Api\V1\BrandRepository;
+use App\Repositories\Api\V1\ItemRepository;
 use App\Models\MeasureMale;
 
 class UserService
@@ -24,6 +25,8 @@ class UserService
     private $subCategoryRepository;
 
     private $brandRepository;
+
+    private $itemRepository;
     /**
      * AuthController constructor.
      *
@@ -35,7 +38,8 @@ class UserService
         MeasureFemaleRepository $measureFemaleRepository,
         UserRepository $userRepository,
         SubCategoryRepository $subCategoryRepository,
-        BrandRepository $brandRepository
+        BrandRepository $brandRepository,
+        ItemRepository $itemRepository
     )
     {
         $this->measureTypeRepository = $measureTypeRepository;
@@ -44,6 +48,7 @@ class UserService
         $this->userRepository = $userRepository;
         $this->subCategoryRepository = $subCategoryRepository;
         $this->brandRepository = $brandRepository;
+        $this->itemRepository = $itemRepository;
     }
 
 
@@ -73,5 +78,10 @@ class UserService
     public function getBrands()
     {
         return $this->brandRepository->all();
+    }
+
+    public function getItems()
+    {
+        return $this->itemRepository->all();
     }
 }
