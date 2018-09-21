@@ -40,4 +40,10 @@ class UserController extends Controller
         $subCat = $this->userService->subcategories();
         return $this->responseSuccessArray($subCat);
     }
+
+    public function getBrands()
+    {
+        $branchs = $this->userService->getBrands();
+        return $this->responseSuccessArray($branchs);
+    }
 }
