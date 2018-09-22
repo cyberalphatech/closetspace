@@ -26,14 +26,12 @@ class RegisterUserRequest extends Request
     {
         $rules = [
             'email' => 'required|string|email|unique:users,email',
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'dob' => 'required|date',
             'gender' => 'required',
             'picture' => 'required|image|mimes:jpg,jpeg,png,gif',
             'cover' => 'required',
-            'zipcode' => 'required',
-            'city' => 'required',
-            'country_id' => 'required',
             'password' => 'required|string|min:6',
             'confirm_password' => 'required|string|same:password'
         ];
