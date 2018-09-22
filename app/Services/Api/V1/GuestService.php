@@ -60,7 +60,6 @@ class GuestService
             $dataProfile['gender'] = $request->get('gender');
             $dataProfile['dob'] = $request->get('dob');
             $dataProfile['user_id'] = $user->id;
-            $dataProfile['cover'] = $request->get('cover');
             $dataProfile['state'] = $request->get('state');
             $dataProfile['city'] = $request->get('city');
             $dataProfile['country_id'] = $request->get('country_id');

@@ -19,7 +19,6 @@ class Profile extends Model
         'first_name',
         'last_name',
         'email',
-        'cover',
         'dob',
         'gender',
         'picture',

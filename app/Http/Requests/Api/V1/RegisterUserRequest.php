@@ -31,7 +31,6 @@ class RegisterUserRequest extends Request
             'dob' => 'required|date',
             'gender' => 'required',
             'picture' => 'required|image|mimes:jpg,jpeg,png,gif',
-            'cover' => 'required',
             'password' => 'required|string|min:6',
             'confirm_password' => 'required|string|same:password'
         ];
