@@ -16,14 +16,14 @@ class Profile extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'cover',
         'dob',
         'gender',
         'picture',
         'user_id',
-        'zipcode',
+        'state',
         'city',
         'country_id'
     ];
