@@ -47,9 +47,9 @@ class UserController extends Controller
         return $this->responseSuccessArray($branchs);
     }
 
-    public function getItems()
+    public function getModels()
     {
-        $items = $this->userService->getItems();
+        $items = $this->userService->getModels();
         return $this->responseSuccessArray($items);
     }
 

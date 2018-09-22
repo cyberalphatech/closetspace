@@ -8,7 +8,7 @@ use App\Repositories\Api\V1\MeasureFemaleRepository;
 use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\SubCategoryRepository;
 use App\Repositories\Api\V1\BrandRepository;
-use App\Repositories\Api\V1\ItemRepository;
+use App\Repositories\Api\V1\ModelRepository;
 use App\Repositories\Api\V1\ColorRepository;
 use App\Models\MeasureMale;
 
@@ -27,7 +27,7 @@ class UserService
 
     private $brandRepository;
 
-    private $itemRepository;
+    private $modelRepository;
 
     private $colorRepository;
     /**
@@ -42,7 +42,7 @@ class UserService
         UserRepository $userRepository,
         SubCategoryRepository $subCategoryRepository,
         BrandRepository $brandRepository,
-        ItemRepository $itemRepository,
+        ModelRepository $modelRepository,
         ColorRepository $colorRepository
     )
     {
@@ -52,7 +52,7 @@ class UserService
         $this->userRepository = $userRepository;
         $this->subCategoryRepository = $subCategoryRepository;
         $this->brandRepository = $brandRepository;
-        $this->itemRepository = $itemRepository;
+        $this->modelRepository = $modelRepository;
         $this->colorRepository = $colorRepository;
     }
 
@@ -85,9 +85,9 @@ class UserService
         return $this->brandRepository->all();
     }
 
-    public function getItems()
+    public function getModels()
     {
-        return $this->itemRepository->all();
+        return $this->modelRepository->all();
     }
 
     public function getColors()

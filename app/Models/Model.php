@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as BaseModel;
 
-class Item extends Model
+class Model extends BaseModel
 {
     protected $fillable = [
         'name',
@@ -13,6 +13,6 @@ class Item extends Model
 
     public function images()
     {
-        return $this->hasMany(ItemImage::class);
+        return $this->morphMany(Media::class, 'mediaable');
     }
 }

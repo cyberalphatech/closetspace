@@ -3,9 +3,9 @@
 namespace App\Repositories\Api\V1;
 
 use Prettus\Repository\Eloquent\BaseRepository;
-use App\Models\Item;
+use App\Models\Model;
 
-class ItemRepository extends BaseRepository
+class ModelRepository extends BaseRepository
 {
     /**
      * Specify Model class name
@@ -13,6 +13,6 @@ class ItemRepository extends BaseRepository
      * @return mixed
      */
     public function model() {
-        return Item::class;
+        return Model::class;
     }
 }
