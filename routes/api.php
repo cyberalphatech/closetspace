@@ -26,8 +26,8 @@ Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::get('/measure-types', 'UserController@getMeasureType');
     Route::post('/measure', 'UserController@postMeasure');
     Route::get('/sub-categories', 'UserController@getSubcategories');
-    Route::get('/brands', 'UserController@getBrands');
+    Route::get('/brands', 'BrandController@index');
     Route::get('/models', 'UserController@getModels');
     Route::get('/colors', 'UserController@getColors');
-    Route::post('/search/catalogues', 'CatalogueController@search');
+    Route::get('/items', 'ItemController@index');
 });
