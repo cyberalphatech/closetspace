@@ -7,6 +7,7 @@ use App\Services\Api\V1\UserService;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Api\V1\GetMeasuareTypeRequest;
 use  App\Http\Requests\Api\V1\PostMeasureRequest;
+use  App\Http\Requests\Api\V1\GetModelRequest;
 
 class UserController extends Controller
 {
@@ -47,10 +48,10 @@ class UserController extends Controller
         return $this->responseSuccessArray($branchs);
     }
 
-    public function getItems()
+    public function getModels(GetModelRequest $request)
     {
-        $items = $this->userService->getItems();
-        return $this->responseSuccessArray($items);
+        $models = $this->userService->getModels($request);
+        return $this->responseSuccessArray($models);
     }
 
     public function getColors()

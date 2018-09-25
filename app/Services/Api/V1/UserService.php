@@ -7,8 +7,7 @@ use App\Repositories\Api\V1\MeasureMaleRepository;
 use App\Repositories\Api\V1\MeasureFemaleRepository;
 use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\SubCategoryRepository;
-use App\Repositories\Api\V1\BrandRepository;
-use App\Repositories\Api\V1\ItemRepository;
+use App\Repositories\Api\V1\ModelRepository;
 use App\Repositories\Api\V1\ColorRepository;
 use App\Models\MeasureMale;
 
@@ -25,9 +24,7 @@ class UserService
 
     private $subCategoryRepository;
 
-    private $brandRepository;
-
-    private $itemRepository;
+    private $modelRepository;
 
     private $colorRepository;
     /**
@@ -41,8 +38,7 @@ class UserService
         MeasureFemaleRepository $measureFemaleRepository,
         UserRepository $userRepository,
         SubCategoryRepository $subCategoryRepository,
-        BrandRepository $brandRepository,
-        ItemRepository $itemRepository,
+        ModelRepository $modelRepository,
         ColorRepository $colorRepository
     )
     {
@@ -51,8 +47,7 @@ class UserService
         $this->measureFemaleRepository = $measureFemaleRepository;
         $this->userRepository = $userRepository;
         $this->subCategoryRepository = $subCategoryRepository;
-        $this->brandRepository = $brandRepository;
-        $this->itemRepository = $itemRepository;
+        $this->modelRepository = $modelRepository;
         $this->colorRepository = $colorRepository;
     }
 
@@ -80,14 +75,17 @@ class UserService
         return $this->subCategoryRepository->all();
     }
 
-    public function getBrands()
+    public function getModels($request)
     {
-        return $this->brandRepository->all();
-    }
-
-    public function getItems()
-    {
-        return $this->itemRepository->all();
+        $columns = array('models.id', 'models.name');
+        $brandId = $request->get('brand_id');
+        $subCategoryId = $request->get('sub_category_id');
+        $models = $this->modelRepository->scopeQuery(function($query) use($brandId, $subCategoryId){
+            return $query->join('brand_models', 'brand_models.model_id', '=', 'models.id')
+                        ->join('sub_category_brands', 'sub_category_brands.brand_id', '=', 'brand_models.id')
+                        ->where('brand_models.brand_id', $brandId)->where('sub_category_brands.sub_category_id', '=', $subCategoryId);
+        })->all($columns);
+        return $models;
     }
 
     public function getColors()
