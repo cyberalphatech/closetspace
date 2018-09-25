@@ -49,18 +49,18 @@ class GuestService
         try {
             
             $dataUser['email'] = $request->get('email');
-            $dataUser['name'] = $request->get('name');
+            $dataUser['name'] = $request->get('first_name'). ' '. $request->get('last_name');
             $dataUser['password'] = bcrypt($request->get('password'));
             $user = $this->userRepository->updateOrCreate($dataUser);
             $fileName = FileHelper::storageFile($request->file('picture'), 'profile');
             $dataProfile['picture'] = $fileName;
             $dataProfile['email'] = $request->get('email');
-            $dataProfile['name'] = $request->get('name');
+            $dataProfile['first_name'] = $request->get('first_name');
+            $dataProfile['last_name'] = $request->get('last_name');
             $dataProfile['gender'] = $request->get('gender');
             $dataProfile['dob'] = $request->get('dob');
             $dataProfile['user_id'] = $user->id;
-            $dataProfile['cover'] = $request->get('cover');
-            $dataProfile['zipcode'] = $request->get('zipcode');
+            $dataProfile['state'] = $request->get('state');
             $dataProfile['city'] = $request->get('city');
             $dataProfile['country_id'] = $request->get('country_id');
             $profile = $this->profileRepository->updateOrCreate($dataProfile);

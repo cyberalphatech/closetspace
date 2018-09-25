@@ -17,15 +17,15 @@ class CreateProfilesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
-            $table->string('cover');
             $table->dateTime('dob');
             $table->tinyInteger('gender');
             $table->string('picture');
-            $table->string('zipcode');
-            $table->string('city');
-            $table->string('country_id');
+            $table->string('state')->nullable(true);
+            $table->string('city')->nullable(true);
+            $table->string('country_id')->nullable(true);
             $table->timestamps();
         });
     }
