@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\Api\V1\SocialLoginRequest;
+use App\Http\Requests\Api\V1\LocalLoginRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Services\Api\V1\AuthenticationService;
 
@@ -38,6 +39,17 @@ class AuthController extends Controller
             return $this->responseSuccess($data);
         } catch (\Exception $ex) {
             return $this->responseError('Login fail', Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function localLogin(LocalLoginRequest $request)
+    {
+        try {
+            $input = $request->all();
+            $data = $this->authenticateService->processLocalLogin($input);
+            return $this->responseSuccess($data);
+        } catch (\Exception $ex) {
+            return $this->responseError('Login fail', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 }

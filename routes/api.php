@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::post('/login/social', 'AuthController@socialLogin');
+    Route::post('/login', 'AuthController@localLogin');
     Route::post('/register', 'GuestController@register');
     Route::get('/genders', 'GuestController@getGenders');
     Route::get('/styles', 'GuestController@getStyles');
