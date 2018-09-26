@@ -9,6 +9,8 @@ use App\Repositories\Api\V1\AccountSocialRepository;
 use App\Repositories\Api\V1\UserRepository;
 use App\Models\User;
 use DB;
+use Illuminate\Support\Facades\Auth;
+use Config;
 
 class AuthenticationService {
 
@@ -79,7 +81,7 @@ class AuthenticationService {
                 $this->updateDataAfterLogin($user, $data);
                 DB::commit();
                 return [
-                    'token' => $user->createToken(config("app.name"))->accessToken,
+                    'token' => $user->createToken(Config::get("app.name"))->accessToken,
                     'has_activity' => true,
                     'message' => 'Login sucessfully',
                     'userID' => $user->id,
@@ -92,4 +94,16 @@ class AuthenticationService {
         }
     }
 
+    public function processLocalLogin($data)
+    {
+        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){ 
+            $user = Auth::user();
+            $success['token'] =  $user->createToken(Config::get('app.name'))-> accessToken;
+            $success['token_type'] = 'Bearer';
+            $success['user'] = $user;
+            $this->updateDataAfterLogin($user, $data);
+            return $success;
+        }
+        throw new \Exception('');
+    }
 }
