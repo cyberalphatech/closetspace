@@ -30,4 +30,5 @@ Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::get('/models', 'UserController@getModels');
     Route::get('/colors', 'UserController@getColors');
     Route::get('/items', 'ItemController@index');
+    Route::post('/items', 'UserController@addItem');
 });

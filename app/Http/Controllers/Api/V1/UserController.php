@@ -4,24 +4,32 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\Controller;
 use App\Services\Api\V1\UserService;
+use App\Services\Api\V1\ItemService;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Api\V1\GetMeasuareTypeRequest;
 use  App\Http\Requests\Api\V1\PostMeasureRequest;
 use  App\Http\Requests\Api\V1\GetModelRequest;
+use  App\Http\Requests\Api\V1\PostUserItemRequest;
 
 class UserController extends Controller
 {
 
     private $userService;
 
+    private $itemService;
+
     /**
      * AuthController constructor.
      *
      * @param GuestService $userService UserService
      */
-    public function __construct(UserService $userService)
+    public function __construct(
+        UserService $userService,
+        ItemService $itemService
+    )
     {
         $this->userService = $userService;
+        $this->itemService = $itemService;
     }
 
     public function getMeasureType(GetMeasuareTypeRequest $request)
@@ -58,5 +66,11 @@ class UserController extends Controller
     {
         $colors = $this->userService->getColors();
         return $this->responseSuccessArray($colors);
+    }
+
+    public function addItem(PostUserItemRequest $request)
+    {
+        $userItem = $this->itemService->addItemUser($request);
+        return $this->responseSuccess($userItem);
     }
 }
