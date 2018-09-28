@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::post('/login/social', 'AuthController@socialLogin');
     Route::post('/login', 'AuthController@localLogin');
@@ -32,4 +28,9 @@ Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::get('/colors', 'UserController@getColors');
     Route::get('/items', 'ItemController@index');
     Route::post('/items', 'UserController@addItem');
+
+    Route::group(['middleware'=> ['auth:api']], function () {
+        Route::get('/me/logout', 'AuthController@logout');
+    });
 });
+
