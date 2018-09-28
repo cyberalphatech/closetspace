@@ -99,4 +99,12 @@ class UserService
         $user = Auth::user();
         return $user;
     }
+
+    public function updatePassword($request)
+    {
+        $password = $request->get('password');
+        $user = Auth::user();
+        $user->password =  bcrypt($request->get('password'));
+        $user->save();
+    }
 }

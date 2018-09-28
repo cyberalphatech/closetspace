@@ -32,6 +32,7 @@ Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
     Route::group(['middleware'=> ['auth:api']], function () {
         Route::get('/me/logout', 'AuthController@logout');
         Route::get('/me', 'UserController@show');
+        Route::post('/me/change-password', 'UserController@updatePassword');
     });
 });
 
