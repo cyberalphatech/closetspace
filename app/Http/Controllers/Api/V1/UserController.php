@@ -10,6 +10,7 @@ use App\Http\Requests\Api\V1\GetMeasuareTypeRequest;
 use  App\Http\Requests\Api\V1\PostMeasureRequest;
 use  App\Http\Requests\Api\V1\GetModelRequest;
 use  App\Http\Requests\Api\V1\PostUserItemRequest;
+use  App\Http\Requests\Api\V1\ChangePasswordRequest;
 
 class UserController extends Controller
 {
@@ -78,5 +79,13 @@ class UserController extends Controller
     {
         $user = $this->userService->getUser();
         return $this->responseSuccess($user);
+    }
+
+    public function updatePassword(ChangePasswordRequest $request)
+    {
+        $this->userService->updatePassword($request);
+        return response()->json([
+            'message'    => "Your password updated!",
+        ], 200);
     }
 }
