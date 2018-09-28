@@ -106,4 +106,18 @@ class AuthenticationService {
         }
         throw new \Exception('');
     }
+
+    public function logout()
+    {
+        $user = Auth::user();
+        $this->deviceRepository->deleteWhere(["user_id" => $user->id]);
+        $accessToken =  $user->token();
+        DB::table('oauth_refresh_tokens')
+            ->where('access_token_id', $accessToken->id)
+            ->update([
+                'revoked' => true
+        ]);
+        $accessToken->revoke();
+    }
+
 }

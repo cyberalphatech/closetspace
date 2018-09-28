@@ -52,4 +52,12 @@ class AuthController extends Controller
             return $this->responseError('Login fail', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
+
+    public function logout()
+    {
+        $this->authenticateService->logout();
+        return response()->json([
+            'message'    => "Logout success!",
+        ], 401);
+    }
 }
