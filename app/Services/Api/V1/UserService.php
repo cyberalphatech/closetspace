@@ -10,6 +10,7 @@ use App\Repositories\Api\V1\SubCategoryRepository;
 use App\Repositories\Api\V1\ModelRepository;
 use App\Repositories\Api\V1\ColorRepository;
 use App\Models\MeasureMale;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -91,5 +92,11 @@ class UserService
     public function getColors()
     {
         return $this->colorRepository->all();
+    }
+
+    public function getUser()
+    {
+        $user = Auth::user();
+        return $user;
     }
 }

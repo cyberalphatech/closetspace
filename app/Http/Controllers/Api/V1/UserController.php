@@ -73,4 +73,10 @@ class UserController extends Controller
         $userItem = $this->itemService->addItemUser($request);
         return $this->responseSuccess($userItem);
     }
+
+    public function show()
+    {
+        $user = $this->userService->getUser();
+        return $this->responseSuccess($user);
+    }
 }
