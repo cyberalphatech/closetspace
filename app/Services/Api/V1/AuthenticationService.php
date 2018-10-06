@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Socialite;
 use App\Repositories\Api\V1\AccountSocialRepository;
 use App\Repositories\Api\V1\UserRepository;
+use App\Repositories\Api\V1\ProfileRepository;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class AuthenticationService {
     protected $deviceRepository;
     protected $accountSocialRepository;
     protected $userRepository;
+    protected $profileRepository;
 
     /**
      * Constructor function
@@ -26,11 +28,13 @@ class AuthenticationService {
     public function __construct(
         DeviceRepository $deviceRepository,
         AccountSocialRepository $accountSocialRepository,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        ProfileRepository $profileRepository
     ) {
         $this->deviceRepository = $deviceRepository;
         $this->accountSocialRepository = $accountSocialRepository;
         $this->userRepository = $userRepository;
+        $this->profileRepository = $profileRepository;
     }
 
     /**
@@ -73,20 +77,21 @@ class AuthenticationService {
                             'password' => 'social',
                             'is_actived' => User::IS_ACTIVED,
                         ]);
+                        $this->profileRepository->create([
+                            'email' => $email,
+                            'user_id' =>$user
+                        ]);
                     }
                     $accountSocial = $this->accountSocialRepository->createAccountSocical($user, $userSocial->id, $data['provider']);
                    
                 }
                 $user = $accountSocial->user;
                 $this->updateDataAfterLogin($user, $data);
+                $success['token'] =  $user->createToken(Config::get('app.name'))->accessToken;
+                $success['token_type'] = 'Bearer';
+                $success['user'] = $user->profile;
                 DB::commit();
-                return [
-                    'token' => $user->createToken(Config::get("app.name"))->accessToken,
-                    'has_activity' => true,
-                    'message' => 'Login sucessfully',
-                    'userID' => $user->id,
-                    'success' => true,
-                ];
+                return $success;
             }
         } catch (\Exception $ex) {
             DB::rollback();
@@ -100,7 +105,7 @@ class AuthenticationService {
             $user = Auth::user();
             $success['token'] =  $user->createToken(Config::get('app.name'))-> accessToken;
             $success['token_type'] = 'Bearer';
-            $success['user'] = $user;
+            $success['user'] = $user->profile;
             $this->updateDataAfterLogin($user, $data);
             return $success;
         }
