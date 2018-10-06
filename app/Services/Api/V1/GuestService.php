@@ -64,8 +64,11 @@ class GuestService
             $dataProfile['city'] = $request->get('city');
             $dataProfile['country_id'] = $request->get('country_id');
             $profile = $this->profileRepository->updateOrCreate($dataProfile);
+            $success['token'] =  $user->createToken(Config::get('app.name'))-> accessToken;
+            $success['token_type'] = 'Bearer';
+            $success['user'] = $profile;
             DB::commit();
-            return $profile;
+            return $success;
         } catch(\Exception $e) {
             DB::rollback();
             throw $e;
