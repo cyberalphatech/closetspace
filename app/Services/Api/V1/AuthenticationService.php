@@ -103,7 +103,7 @@ class AuthenticationService {
     {
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){ 
             $user = Auth::user();
-            $success['token'] =  $user->createToken(Config::get('app.name'))-> accessToken;
+            $success['token'] =  $user->createToken(Config::get('app.name'))->accessToken;
             $success['token_type'] = 'Bearer';
             $success['user'] = $user->profile;
             $this->updateDataAfterLogin($user, $data);
