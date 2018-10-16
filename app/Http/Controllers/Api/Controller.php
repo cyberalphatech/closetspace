@@ -7,6 +7,12 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+/**
+ * @OA\Info(title="Digildrobe API", version="0.1", @OA\Contact(
+ *     email="support@digildrobe.com"
+ *   ))
+ */
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

@@ -21,6 +21,25 @@ class BrandController extends Controller
         $this->brandService = $brandService;
     }
 
+    /**
+     * @OA\Get(
+     *   path="/api/v1/brands",
+     *   tags={"Guest"},
+     *   description="Get list brands.",
+     *   @OA\Parameter(
+     *         name="sub_category_id",
+     *         in="query",
+     *         description="sub category id to filter by",
+     *         @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *         )
+     *     ),
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function index(GetBrandRequest $request)
     {
         $brands = $this->brandService->getBrands($request);

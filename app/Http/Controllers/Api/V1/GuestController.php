@@ -21,6 +21,24 @@ class GuestController extends Controller
         $this->guestService = $guestService;
     }
 
+    /**
+     * @OA\Post(
+     *   path="/api/v1/register",
+     *   tags={"Guest"},
+     *   description="Guest register.",
+     *   @OA\RequestBody(
+     *         description="Guest body register",
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(ref="#/components/schemas/Register")
+     *         )
+     *     ),
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function register(RegisterUserRequest $request)
     {
         try {
@@ -31,16 +49,43 @@ class GuestController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *   path="/api/v1/genders",
+     *   tags={"Guest"},
+     *   description="Get list genders.",
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function getGenders() {
         $genders = $this->guestService->findAllGenders();
         return $this->responseSuccessArray($genders);
     }
 
+    /**
+     * @OA\Get(
+     *   path="/api/v1/styles",
+     *   tags={"Guest"},
+     *   description="Get list styles.",
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function getStyles() {
         $styles = $this->guestService->findAllStyles();
         return $this->responseSuccessArray($styles);
     }
 
+    /**
+     * @OA\Get(
+     *   path="/api/v1/categories",
+     *   tags={"Guest"},
+     *   description="Get list categories.",
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function getCategories() {
         $styles = $this->guestService->findAllCategories();
         return $this->responseSuccessArray($styles);
