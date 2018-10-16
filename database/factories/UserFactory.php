@@ -13,11 +13,65 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'image' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+    ];
+});
+
+$factory->define(App\Models\SubCategory::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'picture' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+    ];
+});
+
+$factory->define(App\Models\MeasureType::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'picture' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+    ];
+});
+$factory->define(App\Models\MeasureUnit::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->sentence(),
+    ];
+});
+
+$factory->define(App\Models\MeasureMale::class, function (Faker $faker) {
+    return [
+        'bshape' => $faker->randomDigitNotNull,
+        'neck'=> $faker->randomDigitNotNull,
+        'chest' => $faker->randomDigitNotNull,
+        'sleeve' => $faker->randomDigitNotNull,
+        'waist' => $faker->randomDigitNotNull,
+        'hips' => $faker->randomDigitNotNull,
+        'inseam' => $faker->randomDigitNotNull,
+    ];
+});
+
+$factory->define(App\Models\MeasureMale::class, function (Faker $faker) {
+    return [
+        'bshape' => $faker->randomDigitNotNull,
+        'bust' => $faker->randomDigitNotNull,
+        'bra' => $faker->randomDigitNotNull,
+        'waist' => $faker->randomDigitNotNull,
+        'hips' => $faker->randomDigitNotNull,
+    ];
+});
+
+$factory->define(App\Models\SubCategoryRelation::class, function (Faker $faker) {
+    return [
     ];
 });

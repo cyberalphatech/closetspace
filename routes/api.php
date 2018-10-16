@@ -13,6 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix'=>'/v1', 'namespace' => 'Api\V1'], function () {
+    Route::post('/login/social', 'AuthController@socialLogin');
+    Route::post('/login', 'AuthController@localLogin');
+    Route::post('/register', 'GuestController@register');
+    Route::get('/genders', 'GuestController@getGenders');
+    Route::get('/styles', 'GuestController@getStyles');
+    Route::get('/categories', 'GuestController@getCategories');
+    Route::get('/measure-types', 'UserController@getMeasureType');
+    Route::post('/measure', 'UserController@postMeasure');
+    Route::get('/sub-categories', 'UserController@getSubcategories');
+    Route::get('/brands', 'BrandController@index');
+    Route::get('/models', 'UserController@getModels');
+    Route::get('/colors', 'UserController@getColors');
+    Route::get('/items', 'ItemController@index');
+    Route::post('/items', 'UserController@addItem');
+
+    Route::group(['middleware'=> ['auth:api']], function () {
+        Route::get('/me/logout', 'AuthController@logout');
+        Route::get('/me', 'UserController@show');
+        Route::post('/me/change-password', 'UserController@updatePassword');
+    });
 });
+
