@@ -9,7 +9,7 @@ use App\Repositories\Api\V1\UserRepository;
 use App\Repositories\Api\V1\SubCategoryRepository;
 use App\Repositories\Api\V1\ModelRepository;
 use App\Repositories\Api\V1\ColorRepository;
-use App\Models\MeasureFemale;
+use App\Models\MeasureMale;
 use Illuminate\Support\Facades\Auth;
 
 class UserService
@@ -66,7 +66,7 @@ class UserService
         $user = $this->userRepository->first();
         $data['measure_unit_id'] = 1;
         $data['user_id'] = $user->id;
-        if ((int)$request->get('gender') == MeasureFemale::TYPE) {
+        if ((int)$request->get('gender') == MeasureMale::TYPE) {
             return $this->measureMaleRepository->create($data);
         }
         return $this->measureFemaleRepository->create($data);
