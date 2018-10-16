@@ -68,6 +68,7 @@ class GuestController extends Controller
      *   path="/api/v1/styles",
      *   tags={"User"},
      *   description="Get list styles.",
+     *   security={{"bearer": {}}, },
      *   @OA\Response(response="200", description="An example resource"),
      *   @OA\Response(response=401, description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
      *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
@@ -83,6 +84,7 @@ class GuestController extends Controller
      *   path="/api/v1/categories",
      *   tags={"User"},
      *   description="Get list categories.",
+     *   security={{"bearer": {}}, },
      *   @OA\Response(response="200", description="An example resource"),
      *   @OA\Response(response=401, description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
      *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
