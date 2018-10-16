@@ -21,6 +21,43 @@ class ItemController extends Controller
         $this->itemService = $itemService;
     }
 
+    /**
+     * @OA\Get(
+     *   path="/api/v1/items",
+     *   tags={"Guest"},
+     *   description="Get list brands.",
+     *   @OA\Parameter(
+     *         name="model_id",
+     *         in="query",
+     *         description="model id to filter by",
+     *         @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="brand_id",
+     *         in="query",
+     *         description="brand id to filter by",
+     *         @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *         )
+     *     ),
+     *    @OA\Parameter(
+     *         name="color_id",
+     *         in="query",
+     *         description="color id to filter by",
+     *         @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *         )
+     *    ),
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function index(GetItemRequest $request)
     {
         $items = $this->itemService->getItems($request);

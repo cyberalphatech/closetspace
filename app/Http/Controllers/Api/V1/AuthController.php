@@ -26,11 +26,22 @@ class AuthController extends Controller
     }
 
     /**
-     * Login by social user
-     *
-     * @param SocialLoginRequest $socialLoginRequest SocialLoginRequest
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *   path="/api/v1/login/social",
+     *   tags={"Guest"},
+     *   description="Guest login by soicial.",
+     *   @OA\RequestBody(
+     *         description="Social body login",
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="form-data",
+     *             @OA\Schema(ref="#/components/schemas/SocialAuthen")
+     *         )
+     *     ),
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=422, description="Invalid data"),
+     *   @OA\Response(response=400, description="Bad request")
+     * )
      */
     public function socialLogin(SocialLoginRequest $socialLoginRequest) {
         try {
@@ -42,6 +53,24 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @OA\Post(
+     *   path="/api/v1/login",
+     *   tags={"Guest"},
+     *   description="Guest login by local.",
+     *   @OA\RequestBody(
+     *         description="local body login",
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="form-data",
+     *             @OA\Schema(ref="#/components/schemas/LocalAuthen")
+     *         )
+     *     ),
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     * )
+     */
     public function localLogin(LocalLoginRequest $request)
     {
         try {
@@ -53,6 +82,16 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *   path="/logout",
+     *   tags={"User"},
+     *   description="User logout.",
+     *   @OA\Response(response="200", description="An example resource"),
+     *   @OA\Response(response=422, description="Invalid data"),
+     *   @OA\Response(response=400, description="Bad request")
+     * )
+     */
     public function logout()
     {
         $this->authenticateService->logout();

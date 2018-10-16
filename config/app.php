@@ -162,6 +162,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        L5Swagger\L5SwaggerServiceProvider::class,
     ],
 
     /*
