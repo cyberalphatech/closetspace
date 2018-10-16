@@ -12,10 +12,4 @@ class ErrorReponse
      * @var string
      */
     public $message;
-
-    /**
-     * @OA\Property(description="An array errors")
-     * @var string
-     */
-    public $errors;
 }

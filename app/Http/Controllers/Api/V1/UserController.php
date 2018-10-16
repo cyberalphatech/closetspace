@@ -48,8 +48,8 @@ class UserController extends Controller
      *         )
      *     ),
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function getMeasureType(GetMeasuareTypeRequest $request)
@@ -67,13 +67,13 @@ class UserController extends Controller
      *         description="Measure body register",
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="form-data",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(ref="#/components/schemas/Measure")
      *         )
      *     ),
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function postMeasure(PostMeasureRequest $request)
@@ -88,7 +88,7 @@ class UserController extends Controller
      *   tags={"User"},
      *   description="Get list sub categories.",
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function getSubCategories()
@@ -121,8 +121,8 @@ class UserController extends Controller
      *         )
      *     ),
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function getModels(GetModelRequest $request)
@@ -137,7 +137,7 @@ class UserController extends Controller
      *   tags={"User"},
      *   description="Get list colors",
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function getColors()
@@ -155,13 +155,13 @@ class UserController extends Controller
      *         description="Items body register",
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="form-data",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(ref="#/components/schemas/Item")
      *         )
      *     ),
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function addItem(PostUserItemRequest $request)
@@ -176,7 +176,7 @@ class UserController extends Controller
      *   tags={"User"},
      *   description="Get profile",
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function show()
@@ -187,20 +187,20 @@ class UserController extends Controller
 
     /**
      * @OA\Post(
-     *   path="/api/v1/change-password",
+     *   path="/api/v1/me/change-password",
      *   tags={"User"},
      *   description="User update password.",
      *   @OA\RequestBody(
      *         description="Password body register",
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="form-data",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(ref="#/components/schemas/UpdatePasswordBody")
      *         )
      *     ),
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function updatePassword(ChangePasswordRequest $request)
