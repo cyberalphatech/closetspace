@@ -34,9 +34,9 @@ class GuestController extends Controller
      *             @OA\Schema(ref="#/components/schemas/Register")
      *         )
      *     ),
-     *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response="200", description="An example resource", @OA\JsonContent(ref="#/components/schemas/RegisterResponse")),
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function register(RegisterUserRequest $request)

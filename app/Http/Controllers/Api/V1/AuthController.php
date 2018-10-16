@@ -34,13 +34,13 @@ class AuthController extends Controller
      *         description="Social body login",
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="form-data",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(ref="#/components/schemas/SocialAuthen")
      *         )
      *     ),
-     *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data"),
-     *   @OA\Response(response=400, description="Bad request")
+     *   @OA\Response(response="200", description="An example resource", @OA\JsonContent(ref="#/components/schemas/RegisterResponse")),
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function socialLogin(SocialLoginRequest $socialLoginRequest) {
@@ -62,13 +62,13 @@ class AuthController extends Controller
      *         description="local body login",
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="form-data",
+     *             mediaType="multipart/form-data",
      *             @OA\Schema(ref="#/components/schemas/LocalAuthen")
      *         )
      *     ),
-     *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data", @OA\Schema(ref="#/components/schemas/ErrorReponse")),
-     *   @OA\Response(response=400, description="Bad request", @OA\Schema(ref="#/components/schemas/ErrorReponse"))
+     *   @OA\Response(response="200", description="An example resource", @OA\JsonContent(ref="#/components/schemas/RegisterResponse")),
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function localLogin(LocalLoginRequest $request)
@@ -84,12 +84,12 @@ class AuthController extends Controller
 
     /**
      * @OA\Get(
-     *   path="/logout",
+     *   path="/api/v1/me/logout",
      *   tags={"User"},
      *   description="User logout.",
      *   @OA\Response(response="200", description="An example resource"),
-     *   @OA\Response(response=422, description="Invalid data"),
-     *   @OA\Response(response=400, description="Bad request")
+     *   @OA\Response(response=422, description="Invalid data", @OA\JsonContent(ref="#/components/schemas/ErrorDataReponse")),
+     *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
      */
     public function logout()

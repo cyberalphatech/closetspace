@@ -42,7 +42,9 @@ return [
         |--------------------------------------------------------------------------
          */
         'middleware' => [
-            'api' => [],
+            'api' => [
+                
+            ],
             'asset' => [],
             'docs' => [],
             'oauth2_callback' => [],
@@ -154,6 +156,11 @@ return [
             ],
         ],
         */
+        'bearer' => [ // Unique name of security
+            'type' => 'http', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
+            'scheme' => 'bearer',
+            "bearerFormat" => "JWT",
+        ],
     ],
 
     /*
