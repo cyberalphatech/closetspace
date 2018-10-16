@@ -25,7 +25,8 @@ class ItemController extends Controller
      * @OA\Get(
      *   path="/api/v1/items",
      *   tags={"User"},
-     *   description="Get list brands.",
+     *   description="Get list items.",
+     *   security={{"bearer": {}}, },
      *   @OA\Parameter(
      *         name="model_id",
      *         in="query",

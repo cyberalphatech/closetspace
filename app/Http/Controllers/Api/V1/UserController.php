@@ -38,6 +38,7 @@ class UserController extends Controller
      *   path="/api/v1/mesure-types",
      *   tags={"User"},
      *   description="Get list mesure types.",
+     *   security={{"bearer": {}}, },
      *   @OA\Parameter(
      *         name="gender",
      *         in="query",
@@ -64,6 +65,7 @@ class UserController extends Controller
      *   path="/api/v1/measure",
      *   tags={"User"},
      *   description="create measure.",
+     *   security={{"bearer": {}}, },
      *   @OA\RequestBody(
      *         description="Measure body register",
      *         required=true,
@@ -89,6 +91,7 @@ class UserController extends Controller
      *   path="/api/v1/sub-categories",
      *   tags={"User"},
      *   description="Get list sub categories.",
+     *   security={{"bearer": {}}, },
      *   @OA\Response(response="200", description="An example resource"),
      *   @OA\Response(response=401, description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
      *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
@@ -105,6 +108,7 @@ class UserController extends Controller
      *   path="/api/v1/models",
      *   tags={"User"},
      *   description="Get list models.",
+     *   security={{"bearer": {}}, },
      *   @OA\Parameter(
      *         name="brand",
      *         in="query",
@@ -140,6 +144,7 @@ class UserController extends Controller
      *   path="/api/v1/colors",
      *   tags={"User"},
      *   description="Get list colors",
+     *   security={{"bearer": {}}, },
      *   @OA\Response(response="200", description="An example resource"),
      *   @OA\Response(response=401, description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
      *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
@@ -156,6 +161,7 @@ class UserController extends Controller
      *   path="/api/v1/items",
      *   tags={"User"},
      *   description="Add user items.",
+     *   security={{"bearer": {}}, },
      *   @OA\RequestBody(
      *         description="Items body register",
      *         required=true,
@@ -181,6 +187,7 @@ class UserController extends Controller
      *   path="/api/v1/me",
      *   tags={"User"},
      *   description="Get profile",
+     *   security={{"bearer": {}}, },
      *   @OA\Response(response="200", description="An example resource"),
      *   @OA\Response(response=401, description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/ErrorReponse")),
      *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
@@ -197,6 +204,7 @@ class UserController extends Controller
      *   path="/api/v1/me/change-password",
      *   tags={"User"},
      *   description="User update password.",
+     *   security={{"bearer": {}}, },
      *   @OA\RequestBody(
      *         description="Password body register",
      *         required=true,

@@ -87,6 +87,7 @@ class AuthController extends Controller
      *   path="/api/v1/me/logout",
      *   tags={"User"},
      *   description="User logout.",
+     *   security={{"bearer": {}}, },
      *   @OA\Response(response="401", description="Logout success!"),
      *   @OA\Response(response=400, description="Bad request", @OA\JsonContent(ref="#/components/schemas/ErrorReponse"))
      * )
