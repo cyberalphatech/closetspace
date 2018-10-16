@@ -4,6 +4,7 @@ namespace App\Services\Api\V1;
 
 use App\Repositories\Api\V1\ItemRepository;
 use App\Repositories\Api\V1\UserItemRepository;
+use Illuminate\Support\Facades\Auth; 
 
 class ItemService {
 
@@ -36,7 +37,8 @@ class ItemService {
     public function addItemUser($request)
     {
         $data = $request->all();
-        $data['user_id'] = 1;
+        $user = Auth::user();
+        $data['user_id'] = $user->id;
         $userItem = $this->userItemRepository->create($data);
         return $userItem;
     }
