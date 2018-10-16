@@ -61,6 +61,7 @@ class UserService
 
     public function createMeasure($request)
     {
+        $user = Auth::user();
         $data = $request->all();
         $user = $this->userRepository->first();
         $data['measure_unit_id'] = 1;
